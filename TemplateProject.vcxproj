@@ -102,6 +102,9 @@
     <ClInclude Include="glew\include\Gl\glew.h" />
     <ClInclude Include="glew\include\Gl\glxew.h" />
     <ClInclude Include="glew\include\Gl\wglew.h" />
+    <ClInclude Include="ObjetoExtra.h" />
+    <ClInclude Include="Triangulo.h" />
+    <ClInclude Include="Árbol.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cwc\source\glApplication.cpp" />
@@ -132,6 +135,9 @@
     <ClCompile Include="freeglut\source\freeglut_window.c" />
     <ClCompile Include="glew\source\glew.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjetoExtra.cpp" />
+    <ClCompile Include="Triangulo.cpp" />
+    <ClCompile Include="Árbol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut\source\freeglutdll.def" />
