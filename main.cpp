@@ -9,6 +9,12 @@
 #include <iostream>
 #include "glsl.h"
 #include <time.h>
+#include "Cola.h"
+#include "Cilindro.h"
+#define shoulder 0
+#define elbow 20
+#define segmentos 50
+
 
 //-----------------------------------------------------------------------------
 
@@ -22,6 +28,8 @@ protected:
    clock_t time0,time1;
    float timer010;  // timer counting 0->1->0
    bool bUp;        // flag if counting up or down.
+   Cola espiral;
+   Cilindro extra;
 
 
 public:
@@ -35,59 +43,17 @@ public:
       glPushMatrix();
       if (shader) shader->begin();
          
-         glTranslatef(0.0, 0.0, -9.0);
+         glTranslatef(0.0, -3.0, -9.0);
          glRotatef(timer010 * 360, 0.0, 0.5, 0.0);
          glPushMatrix();
          
-         //Tetera derecha
-         glPushMatrix();
-            glRotatef(180, 0, 1, 0);
-            glTranslatef(3.0, 0.0, 0.0);
-            glutSolidTeapot(0.7);
-         glPopMatrix();
+             //Cola en Espiral
+             espiral.DibujarCola(shoulder, elbow, segmentos);
 
-         //Tetera izquierda
-         glPushMatrix();
-            glRotatef(180, 0, 1, 0);
-            glTranslatef(-3.0, 0.0, 0.0);
-            glutSolidTeapot(0.7);
-         glPopMatrix();
+             //Objeto Extra
+             extra.DibujarCilindro();
 
-         //Tetera inferior
-         glPushMatrix();
-            glRotatef(180, 0, 1, 0);
-            glTranslatef(0.0, -3.0, 0.0);
-            glutSolidTeapot(0.7);
-         glPopMatrix();
-         
-         //Cubo derecha superior con inclinación sobre su propio eje
-         glPushMatrix();
-            glTranslatef(3.0, 3.0, 0.0);
-            glRotatef(45, 0, 0, 1);
-            glutSolidCube(0.7);
-         glPopMatrix();
 
-         //Cubo izquierda superior con inclinación respecto al origen
-         glPushMatrix();
-            glRotatef(-30, 0, 0, 1);
-            glTranslatef(-3.0, 0.0, 0.0);         
-            glutSolidCube(0.7);
-         glPopMatrix();
-
-         //Triángulo equilátero de lado 3
-         glPushMatrix();
-            glTranslatef(0.0, 3.0, 0.0);
-            glBegin(GL_TRIANGLES);
-                glVertex3f(0.0, 1.3, 0.0);
-                glVertex3f(-1.5, -1.3, 0.0);
-                glVertex3f(1.5, -1.3, 0.0);
-            glEnd();
-         glPopMatrix();
-
-         //Objeto Extra
-         glPushMatrix();
-            glutWireIcosahedron();
-         glPopMatrix();
 
          glPopMatrix();
       if (shader) shader->end();
@@ -120,6 +86,8 @@ public:
       time0 = clock();
       timer010 = 0.0f;
       bUp = true;
+      espiral = Cola();
+      extra = Cilindro();
 
       DemoLight();
 

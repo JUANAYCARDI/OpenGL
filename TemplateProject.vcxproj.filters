@@ -69,6 +69,8 @@
     <ClInclude Include="cwc\include\glWindow.h">
       <Filter>cwc\include</Filter>
     </ClInclude>
+    <ClInclude Include="Cilindro.h" />
+    <ClInclude Include="Cola.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glew\source\glew.c">
@@ -153,6 +155,8 @@
       <Filter>cwc\source</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Cilindro.cpp" />
+    <ClCompile Include="Cola.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut\source\freeglutdll.def">
